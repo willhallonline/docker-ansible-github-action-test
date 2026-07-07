@@ -4,7 +4,9 @@ Integration test repository for [`willhallonline/docker-ansible-github-action`](
 
 It doesn't test any real infrastructure. It simply runs a minimal playbook
 (`playbooks/site.yml`) against `localhost` using the action, across a matrix
-of `willhallonline/ansible` image tags, to confirm that:
+of every actively maintained `willhallonline/ansible` image tag (59 tags,
+per the [supported tags table](https://github.com/willhallonline/docker-ansible#supported-tags-and-respective-dockerfile-links)
+— unmaintained Ansible versions 2.9-2.15 are excluded), to confirm that:
 
 - the action can pull and run each image tag
 - `ansible-playbook` executes successfully inside the container

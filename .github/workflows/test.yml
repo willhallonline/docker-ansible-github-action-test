@@ -15,13 +15,87 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      # Run enough jobs in parallel to get through the full matrix quickly,
+      # while staying within GitHub-hosted runner concurrency limits.
+      max-parallel: 20
       matrix:
+        # Every actively maintained tag published by willhallonline/docker-ansible,
+        # per the support matrix in https://github.com/willhallonline/docker-ansible#supported-tags-and-respective-dockerfile-links
+        # (unmaintained/EOL Ansible versions such as 2.9-2.15 are intentionally excluded).
+        # Update this list when upstream adds/drops a supported combination.
         image-tag:
+          # Convenience aliases
           - latest
+          - alpine
+          - ubuntu
+          # Alpine 3.19 (Ansible 2.16-2.19 only)
+          - 2.16-alpine-3.19
+          - 2.17-alpine-3.19
+          - 2.18-alpine-3.19
+          - 2.19-alpine-3.19
+          # Alpine 3.20 (Ansible 2.16-2.21)
+          - 2.16-alpine-3.20
+          - 2.17-alpine-3.20
+          - 2.18-alpine-3.20
+          - 2.19-alpine-3.20
+          - 2.20-alpine-3.20
+          - 2.21-alpine-3.20
+          # Alpine 3.21 (Ansible 2.16-2.21)
+          - 2.16-alpine-3.21
+          - 2.17-alpine-3.21
+          - 2.18-alpine-3.21
+          - 2.19-alpine-3.21
+          - 2.20-alpine-3.21
+          - 2.21-alpine-3.21
+          # Alpine 3.22 (Ansible 2.16-2.21)
+          - 2.16-alpine-3.22
+          - 2.17-alpine-3.22
+          - 2.18-alpine-3.22
+          - 2.19-alpine-3.22
+          - 2.20-alpine-3.22
           - 2.21-alpine-3.22
-          - 2.20-rockylinux-10
+          # Debian Bookworm (Ansible 2.16-2.19 only)
+          - 2.16-debian-bookworm
+          - 2.17-debian-bookworm
+          - 2.18-debian-bookworm
+          - 2.19-debian-bookworm
+          # Debian Bookworm Slim (Ansible 2.16-2.19 only)
+          - 2.16-debian-bookworm-slim
+          - 2.17-debian-bookworm-slim
+          - 2.18-debian-bookworm-slim
+          - 2.19-debian-bookworm-slim
+          # Debian Trixie (Ansible 2.17-2.21 only)
+          - 2.17-debian-trixie
+          - 2.18-debian-trixie
+          - 2.19-debian-trixie
+          - 2.20-debian-trixie
+          - 2.21-debian-trixie
+          # Debian Trixie Slim (Ansible 2.17-2.21 only)
+          - 2.17-debian-trixie-slim
+          - 2.18-debian-trixie-slim
+          - 2.19-debian-trixie-slim
+          - 2.20-debian-trixie-slim
           - 2.21-debian-trixie-slim
+          # Rocky Linux 10 (Ansible 2.16-2.21)
+          - 2.16-rockylinux-10
+          - 2.17-rockylinux-10
+          - 2.18-rockylinux-10
+          - 2.19-rockylinux-10
+          - 2.20-rockylinux-10
+          - 2.21-rockylinux-10
+          # Ubuntu 22.04 (Ansible 2.16-2.17 only)
+          - 2.16-ubuntu-22.04
+          - 2.17-ubuntu-22.04
+          # Ubuntu 24.04 (Ansible 2.16-2.21)
+          - 2.16-ubuntu-24.04
+          - 2.17-ubuntu-24.04
+          - 2.18-ubuntu-24.04
+          - 2.19-ubuntu-24.04
+          - 2.20-ubuntu-24.04
           - 2.21-ubuntu-24.04
+          # Ubuntu 26.04 (Ansible 2.20-2.21 only)
+          - 2.20-ubuntu-26.04
+          - 2.21-ubuntu-26.04
 
     steps:
       - name: Checkout
