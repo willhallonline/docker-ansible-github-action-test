@@ -1,0 +1,45 @@
+name: Test docker-ansible-github-action
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    # Weekly run to catch upstream image drift/regressions.
+    - cron: '0 6 * * 1'
+
+jobs:
+  ansible:
+    name: image-tag=${{ matrix.image-tag }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image-tag:
+          - latest
+          - 2.21-alpine-3.22
+          - 2.20-rockylinux-10
+          - 2.21-debian-trixie-slim
+          - 2.21-ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run playbook via docker-ansible-github-action
+        id: ansible
+        uses: willhallonline/docker-ansible-github-action@v1.0.0
+        with:
+          playbook: playbooks/site.yml
+          inventory: inventory/localhost.ini
+          image-tag: ${{ matrix.image-tag }}
+          options: '-vv'
+
+      - name: Verify the action reported a successful exit code
+        run: |
+          echo "Reported exit-code: ${{ steps.ansible.outputs.exit-code }}"
+          if [ "${{ steps.ansible.outputs.exit-code }}" != "0" ]; then
+            echo "::error::Expected exit-code 0 but got ${{ steps.ansible.outputs.exit-code }}"
+            exit 1
+          fi
