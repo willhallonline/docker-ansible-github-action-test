@@ -28,18 +28,6 @@ jobs:
           - latest
           - alpine
           - ubuntu
-          # Alpine 3.19 (Ansible 2.16-2.19 only)
-          - 2.16-alpine-3.19
-          - 2.17-alpine-3.19
-          - 2.18-alpine-3.19
-          - 2.19-alpine-3.19
-          # Alpine 3.20 (Ansible 2.16-2.21)
-          - 2.16-alpine-3.20
-          - 2.17-alpine-3.20
-          - 2.18-alpine-3.20
-          - 2.19-alpine-3.20
-          - 2.20-alpine-3.20
-          - 2.21-alpine-3.20
           # Alpine 3.21 (Ansible 2.16-2.21)
           - 2.16-alpine-3.21
           - 2.17-alpine-3.21
@@ -54,6 +42,20 @@ jobs:
           - 2.19-alpine-3.22
           - 2.20-alpine-3.22
           - 2.21-alpine-3.22
+          # Alpine 3.23 (Ansible 2.16-2.21)
+          - 2.16-alpine-3.23
+          - 2.17-alpine-3.23
+          - 2.18-alpine-3.23
+          - 2.19-alpine-3.23
+          - 2.20-alpine-3.23
+          - 2.21-alpine-3.23
+          # Alpine 3.24 (Ansible 2.16-2.21)
+          - 2.16-alpine-3.24
+          - 2.17-alpine-3.24
+          - 2.18-alpine-3.24
+          - 2.19-alpine-3.24
+          - 2.20-alpine-3.24
+          - 2.21-alpine-3.24
           # Debian Bookworm (Ansible 2.16-2.19 only)
           - 2.16-debian-bookworm
           - 2.17-debian-bookworm
@@ -103,7 +105,7 @@ jobs:
 
       - name: Run playbook via docker-ansible-github-action
         id: ansible
-        uses: willhallonline/docker-ansible-github-action@v1.0.0
+        uses: willhallonline/docker-ansible-github-action@v1.1.0
         with:
           playbook: playbooks/site.yml
           inventory: inventory/localhost.ini
