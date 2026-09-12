@@ -6,7 +6,8 @@
 # proves that:
 #   1. ansible-playbook executed successfully inside the container image.
 #   2. Ansible facts can be gathered.
-#   3. A basic module (assert) runs and passes.
+#   3. The current non-root ansible user is active.
+#   4. Basic modules (assert and ping) run and pass.
 - name: Verify ansible-playbook runs correctly inside the container
   hosts: local
   gather_facts: true
@@ -23,6 +24,15 @@
           - ansible_version.full is defined
         fail_msg: "Ansible facts were not gathered as expected."
         success_msg: "Ansible facts gathered successfully."
+
+    - name: Assert that the container uses the supported non-root user
+      ansible.builtin.assert:
+        that:
+          - ansible_facts['ansible_user_id'] == 'ansible'
+          - ansible_facts['ansible_user_uid'] == 1000
+          - ansible_facts['ansible_user_gid'] == 1000
+        fail_msg: "The container is not running as the expected non-root ansible user."
+        success_msg: "The container is running as the non-root ansible user."
 
     - name: Ping localhost to confirm connectivity and module execution
       ansible.builtin.ping:
