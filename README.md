@@ -2,6 +2,9 @@
 
 Integration test repository for [`willhallonline/docker-ansible-github-action`](https://github.com/willhallonline/docker-ansible-github-action).
 
+See the [Docker Ansible documentation](https://docker-ansible.github.io/) to
+make this project easier to use, extend, and contribute to.
+
 It doesn't test any real infrastructure. It simply runs a minimal playbook
 (`playbooks/site.yml`) against `localhost` using the action, across a matrix
 of every actively maintained `willhallonline/ansible` image tag (61 tags,
