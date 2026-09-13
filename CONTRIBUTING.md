@@ -1,4 +1,4 @@
-# Contributing to docker-ansible-github-action-test
+# Contributing to Docker Ansible GitHub Action Test
 
 Thank you for considering contributing! This repository is an integration test suite for [`willhallonline/docker-ansible-github-action`](https://github.com/willhallonline/docker-ansible-github-action), verifying that the action works correctly across every actively maintained [`willhallonline/ansible`](https://hub.docker.com/r/willhallonline/ansible) image tag.
 

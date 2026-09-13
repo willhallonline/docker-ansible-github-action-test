@@ -1,4 +1,4 @@
-# docker-ansible-github-action-test
+# Docker Ansible GitHub Action Test
 
 Integration test repository for [`willhallonline/docker-ansible-github-action`](https://github.com/willhallonline/docker-ansible-github-action).
 
