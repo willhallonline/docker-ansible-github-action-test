@@ -1,4 +1,4 @@
-name: Test docker-ansible-github-action
+name: Docker Ansible GitHub Action Test
 
 on:
   push:
