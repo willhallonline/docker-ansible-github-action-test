@@ -19,9 +19,10 @@ jobs:
       # while staying within GitHub-hosted runner concurrency limits.
       max-parallel: 20
       matrix:
-        # Every actively maintained tag published by willhallonline/docker-ansible,
+        # The compatibility matrix combines current tags published by
+        # willhallonline/docker-ansible with retained 2.16/2.17 tags,
         # per the support matrix in https://github.com/willhallonline/docker-ansible#supported-tags-and-respective-dockerfile-links
-        # (unmaintained/EOL Ansible versions such as 2.9-2.15 are intentionally excluded).
+        # (unmaintained/EOL Ansible versions 2.9-2.15 are intentionally excluded).
         # Update this list when upstream adds/drops a supported combination.
         image-tag:
           # Convenience aliases
@@ -105,7 +106,7 @@ jobs:
 
       - name: Run playbook via docker-ansible-github-action
         id: ansible
-        uses: willhallonline/docker-ansible-github-action@v1.1.0
+        uses: willhallonline/docker-ansible-github-action@v1.1.1
         with:
           playbook: playbooks/site.yml
           inventory: inventory/localhost.ini
