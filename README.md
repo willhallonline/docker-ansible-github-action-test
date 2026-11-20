@@ -6,9 +6,9 @@ See the [Docker Ansible documentation](https://docker-ansible.github.io/) to
 make this project easier to use, extend, and contribute to.
 
 It doesn't test any real infrastructure. It simply runs a minimal playbook
-(`playbooks/site.yml`) against `localhost` using the action across a 61-tag
-compatibility matrix. The matrix contains 41 current tags and aliases for
-Ansible 2.18-2.21 and 20 retained tags for the legacy Ansible 2.16/2.17 lines.
+(`playbooks/site.yml`) against `localhost` using the action across a 65-tag
+compatibility matrix. The matrix contains 45 current tags and aliases for
+Ansible 2.18-2.22 and 20 retained tags for the legacy Ansible 2.16/2.17 lines.
 It excludes unmaintained Ansible versions 2.9-2.15. See the
 [supported tags table](https://github.com/willhallonline/docker-ansible#supported-tags-and-respective-dockerfile-links)
 for the upstream active matrix, and [`.github/workflows/test.yml`](.github/workflows/test.yml)

@@ -3,7 +3,9 @@
 ## v1.1.1 - 2026-11-20
 
 - Updated the CI test to use `willhallonline/docker-ansible-github-action@v1.1.1`.
-- Clarified that the 61-tag matrix is compatibility coverage, with 41 current tags and aliases and 20 retained tags for legacy Ansible 2.16/2.17.
+- Added the four Ansible 2.22 compatibility tags published by upstream: Alpine 3.24, Debian Trixie, Debian Trixie Slim, and Ubuntu 26.04.
+- Expanded the compatibility matrix from 61 to 65 image tags.
+- Clarified that the 65-tag matrix is compatibility coverage, with 45 current tags and aliases and 20 retained tags for legacy Ansible 2.16/2.17.
 - Added explicit matrix comments distinguishing current upstream support from compatibility coverage.
 
 ## v1.1.0 - 2026-09-12

@@ -57,6 +57,8 @@ jobs:
           - 2.19-alpine-3.24
           - 2.20-alpine-3.24
           - 2.21-alpine-3.24
+          # Alpine 3.24 (Ansible 2.22)
+          - 2.22-alpine-3.24
           # Debian Bookworm (Ansible 2.16-2.19 only)
           - 2.16-debian-bookworm
           - 2.17-debian-bookworm
@@ -73,12 +75,16 @@ jobs:
           - 2.19-debian-trixie
           - 2.20-debian-trixie
           - 2.21-debian-trixie
+          # Debian Trixie (Ansible 2.22)
+          - 2.22-debian-trixie
           # Debian Trixie Slim (Ansible 2.17-2.21 only)
           - 2.17-debian-trixie-slim
           - 2.18-debian-trixie-slim
           - 2.19-debian-trixie-slim
           - 2.20-debian-trixie-slim
           - 2.21-debian-trixie-slim
+          # Debian Trixie Slim (Ansible 2.22)
+          - 2.22-debian-trixie-slim
           # Rocky Linux 10 (Ansible 2.16-2.21)
           - 2.16-rockylinux-10
           - 2.17-rockylinux-10
@@ -99,6 +105,8 @@ jobs:
           # Ubuntu 26.04 (Ansible 2.20-2.21 only)
           - 2.20-ubuntu-26.04
           - 2.21-ubuntu-26.04
+          # Ubuntu 26.04 (Ansible 2.22)
+          - 2.22-ubuntu-26.04
 
     steps:
       - name: Checkout
